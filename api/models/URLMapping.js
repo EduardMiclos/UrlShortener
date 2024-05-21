@@ -12,7 +12,7 @@ const URLMappingSchema = new mongoose.Schema({
         required: true
     },
     clicks: {
-        type: int,
+        type: Number,
         default: 0
     }
 }, {timestamps: true})
