@@ -10,6 +10,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<ShortenUrlContainer/>} />
+        <Route path="/:redirectURLCode" element={<ShortenUrlContainer/>} />
         <Route path="/url/:shortURLCode" element={<CheckUrlContainer/>} />
         <Route path="/url/" element={<CheckUrlContainer/>} />
       </Routes>

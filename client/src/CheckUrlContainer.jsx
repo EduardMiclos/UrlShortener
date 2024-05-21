@@ -26,7 +26,7 @@ export function CheckUrlContainer() {
     function isValidURL(string) {
         var res = string.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
         return (res !== null)
-      };
+    };
 
     async function checkShortURL(ev) {
         ev.preventDefault();
@@ -90,8 +90,8 @@ export function CheckUrlContainer() {
                             <div className='mt-20'>
                                 URL<br/> 
 
-                                <div className="flex">
-                                    <a href={url} target='_blank'>{url}</a>
+                                <div className="flex text-sm">
+                                    <a href={url} target='_blank'>{url.length > 50 ? url.slice(0, 50) + '...' : url}</a>
                                     
                                     <div className='bg-gray-300 rounded-sm text-center ml-1 cursor-pointer' onClick={() => {navigator.clipboard.writeText(url)}}>
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="p-1 w-6 h-6">
@@ -111,7 +111,7 @@ export function CheckUrlContainer() {
                             <div className='mt-3'>
                                 Short URL<br/> 
                                 
-                                <div className="flex">
+                                <div className="flex text-sm">
                                     <a href={shortURL} target='_blank'>{shortURL}</a>
                                     
                                     <div className='bg-gray-300 rounded-sm text-center ml-1 cursor-pointer' onClick={() => {navigator.clipboard.writeText(shortURL)}}>
