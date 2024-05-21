@@ -18,7 +18,7 @@ export function CheckUrlContainer() {
             axios.get('/url/' + shortURLCode).then((urlMapping) => {
                 setURL(urlMapping.data.URL);
                 setClicks(urlMapping.data.clicks);
-                setShortURL(axios.defaults.baseURL + '/' + urlMapping.data.shortURL);
+                setShortURL(window.location.origin + '/' + urlMapping.data.shortURL);
             })  
         }
     });

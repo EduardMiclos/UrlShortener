@@ -74,9 +74,18 @@ app.post('/shorten', async (req, res) => {
 });
 
 
-/** Visit a specific URL (given a shorten URL?). */
-app.post('/visit', async (req, res) => {
-    // to do
+/** Update the number of clicks of a specific URL. */
+app.post('/url/:shortURL/update-click', async (req, res) => {
+    const shortURL = req.params.shortURL;
+    let urlMapping = await URLMapping.findOne({shortUrl: shortURL}).exec();
+
+    if (urlMapping === null)
+        res.status(400).json({errMessage: "Could not find the specified short URL!"});
+    else{
+        urlMapping.clicks += 1
+        urlMapping.save();
+        res.status(200).json({succMessage: "Successfully updated the number of clicks!"});
+    }
 });
 
 const start = async() => {

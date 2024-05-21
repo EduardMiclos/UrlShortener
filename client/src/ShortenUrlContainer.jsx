@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 
 export function ShortenUrlContainer() {
     const {redirectURLCode} = useParams();
-
+    
     const [url, setURL] = useState("");
     const navigate = useNavigate();
 
@@ -25,14 +25,16 @@ export function ShortenUrlContainer() {
         }
     }
 
+
     if (redirectURLCode) {
         axios.get('/url/' + redirectURLCode).then((urlMapping) => {
-            window.location.href = urlMapping.data.URL;
+            axios.post('/url/' + redirectURLCode + '/update-click').then(() => {
+                window.location.href = urlMapping.data.URL;
+            })
         })
-
         return null;
     }
-    else {
+    else {                
         return (
             <>
             <div className="flex items-center justify-center min-h-screen font-sans">
